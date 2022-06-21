@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
             console.log('the record is: ', jsonOutput);
             
             // call the function to write the data to the S3 bucket
-            const result = await putObjectS3(JSON.stringify(jsonOutput), JSON.parse(jsonOutput).detail.event_id);
+            const result = await putObjectS3(JSON.stringify(jsonOutput), JSON.parse(jsonOutput).detail.EVENT_ID);
             console.log(result);
             return result;
         }
