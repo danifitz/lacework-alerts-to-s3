@@ -1,3 +1,15 @@
+## Terraform install
+
+### Prequisites
+Install the Lacework CLI and configure an API key. Install the AWS CLI.
+
+1. Clone the repo
+2. `cd terraform`
+3. `terraform init`
+4. `terraform plan/apply`
+
+## Manual install
+
 1. Create an [event bridge integration](https://docs.lacework.com/amazon-event-bridge#create-resources-within-your-aws-account)
 2. Create a new Lambda function based on the `hello-world` blueprint. Copy the code from `index.js` into the new function
 3. Edit the SQS Access Policy to enable the Lambda execution role to access it
