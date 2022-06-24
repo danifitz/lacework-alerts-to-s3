@@ -22,7 +22,7 @@ const putObjectS3 = (data, nameOfFile) => {
     //Write to file
     var s3 = new AWS.S3();
     var params = {
-        Bucket : "daniel-f-lacework-alerts-bucket",
+        Bucket : process.env.S3_BUCKET_NAME,
         Key : nameOfFile + ".json",
         Body : data
     }

@@ -12,6 +12,12 @@ resource "aws_lambda_function" "lacework_sqs_to_s3" {
   source_code_hash = filebase64sha256("${path.module}/../index.js")
 
   runtime = "nodejs12.x"
+
+  environment {
+    variables = {
+      S3_BUCKET_NAME = aws_s3_bucket.lacework_alerts_bucket.name
+    }
+  }
 }
 
 resource "aws_iam_role" "lacework_alerts_lambda_execution_role" {
