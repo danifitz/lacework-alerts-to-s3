@@ -6,11 +6,22 @@ resource "aws_sqs_queue" "lacework_alerts_queue" {
   receive_wait_time_seconds = 0
 }
 
+# data "aws_iam_policy_document" "sqs_send_message_policy" {
+#   statement {
+#     effect  = "Allow"
+#     actions = ["SQS:SendMessage"]
+
+#     principals {
+#       type        = "Service"
+#       identifiers = ["events.amazonaws.com"]
+#     }
+
+#     resources = [aws_sqs_queue.lacework_alerts_queue.arn]
+#   }
+# }
+
 resource "aws_sqs_queue_policy" "lacework_alerts_queue_policy" {
   queue_url = aws_sqs_queue.lacework_alerts_queue.id
-
-
-  # TODO: Fix Lambda principal ARN to the Lambda execution role AEN
   policy = <<POLICY
   {
   "Version": "2008-10-17",

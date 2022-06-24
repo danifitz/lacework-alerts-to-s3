@@ -79,3 +79,8 @@ resource "aws_iam_role_policy_attachment" "lambda-role-policy-attach" {
   role       = aws_iam_role.lacework_alerts_lambda_execution_role.name
   policy_arn = aws_iam_policy.lacework_alerts_lambda_execution_policy.arn
 }
+
+resource "aws_lambda_event_source_mapping" "lacework-alerts-sqs-to-lambda" {
+  event_source_arn = aws_sqs_queue.lacework_alerts_queue.arn
+  function_name    = aws_lambda_function.lacework_sqs_to_s3.arn
+}
