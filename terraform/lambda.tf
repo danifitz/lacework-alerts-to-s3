@@ -15,7 +15,7 @@ resource "aws_lambda_function" "lacework_sqs_to_s3" {
 
   environment {
     variables = {
-      S3_BUCKET_NAME = aws_s3_bucket.lacework_alerts_bucket.name
+      S3_BUCKET_NAME = "${var.aws_s3_bucket_name}"
     }
   }
 }
