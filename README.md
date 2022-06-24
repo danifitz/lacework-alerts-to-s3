@@ -1,3 +1,25 @@
+# Lacework S3 alert channel
+
+## What does this do?
+
+Creates resources in AWS and Lacework to pipe alerts from Lacework via AWS Eventbridge to AWS S3 bucket.
+
+The flows goes as so:
+
+`Lacework -> AWS Eventbridge -> AWS SQS -> AWS Lambda function -> AWS S3 bucket`
+
+The terraform module will create the following in your AWS account
+
+1. AWS EventBridge Event Bus
+2. AWS EventBridge Event Rule
+3. AWS SQS Queue
+4. AWS IAM role for Lambda function
+5. AWS Lambda function to move JSON from SQS to S3
+6. AWS S3 bucket to store the Alert JSON
+7. Lacework event bridge alert channel
+
+NOTE: You still need to attach a Lacework alert rule to the alert channel to route alerts to the channel.
+
 ## Terraform install
 
 ### Prequisites
